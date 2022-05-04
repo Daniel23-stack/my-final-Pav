@@ -10,16 +10,13 @@ import { Component, OnInit } from '@angular/core';
             <button type="button" class="btn btn-lg btn-info p-2 m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
               EDIT PAGE
             </button>
-    <div class="container hero" style.background-image="url('{{image}}')">
+    <div class="container hero" style="height:500px" style.background-image="url('{{image}}')">
       <h4 style="color:#5252d9;font-family: 'Arial Black'; font-size: 30px; Text-align: center" class="lead p-2"> {{headertext}}</h4>
       <div class="container">
         <div class="row">
           <div class="col-6">
             <p style="font-family: 'Arial'; font-size:20px">
-              {{messagetext}}
-              
-
-            </p>
+            <div [froalaView]="messagetext"></div>
           </div>
           <div class="col-6">
             <div class="container">
@@ -29,7 +26,7 @@ import { Component, OnInit } from '@angular/core';
         </div>
       </div>
       <div class="col-md-12 text-center">
-        <button routerLink="/Rebrand" type="button" class="btn btn-lg btn-info p-2 m-2">Next</button>
+        <button routerLink="/Rebrand" type="button" class="btn btn-lg btn-info p-2 m-2 my-next">Next</button>
       </div>
     </div>
             <!--modal-->
@@ -51,12 +48,12 @@ import { Component, OnInit } from '@angular/core';
                       <hr>
                       <div class="col-md-12">
                         <label for="exampleFormControlInput1" class="form-label">VIDEO URL:</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Video">
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Video">
                       </div>
                       <hr>
                       <div class="col-md-12">
                         <label for="exampleFormControlTextarea1" class="form-label">Message</label>
-                        <textarea (input)="updateMessage($event)"  class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea [froalaEditor] [(froalaModel)]="messagetext"  class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                       </div>
                     </div>
                     <hr>
@@ -85,6 +82,12 @@ import { Component, OnInit } from '@angular/core';
    background-repeat: no-repeat;
    background-position: center;
     
+  }
+  .my-next{
+    float: bottom;
+  }
+  body{
+    color: aqua;
   }
   `
   ]

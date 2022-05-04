@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-root',
   template: `
     <!--header-->
     <!--my nav-->
     <app-header></app-header>
+   
    
 
     <!--footer-->
