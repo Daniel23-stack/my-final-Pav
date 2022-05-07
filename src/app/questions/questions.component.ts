@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-questions',
   template: `
-    <div class="container">
+    <div class="container-wrapper">
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
