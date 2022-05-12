@@ -14,14 +14,14 @@ import { Component, OnInit } from '@angular/core';
      <div class="row hero" style.background-image="url('{{image}}')">
        <div class="col-3"></div>
        <div class="col-3">
-         <img style="margin-top:10%" [src]="url" alt="" width="250px" height="150px">
+         <img style="margin-top:10%" [src]="url" alt="" width="350px" height="350px">
          <p style="color:#0f2459; margin-top:30%; font-family: 'Arial Black'; font-size: 50px">
            {{heading}}
            
          </p>
        </div>
        <div class="col-3" style="margin-top:20%">
-         <div class="card" style="width: 18rem;">
+         <!--<div class="card" style="width: 18rem;">
            <div class="card-body">
              <h5 class=" mb-4 card-title" style="color:#0f2459;font-family: 'Arial Black'; font-size: 30px; Text-align: center">Tell us more</h5>
              <div class="">
@@ -43,8 +43,12 @@ import { Component, OnInit } from '@angular/core';
              <button routerLink="/Message" class="btn btn-info m-5 col-md-6 text-center" >SUBMIT</button>
            </div>
          </div>
-       </div>
+       </div>-->
        <div class="col-3"></div>
+     </div>
+     <div class="col-md-12 text-center ">
+       <button routerLink="/Questions" type="button" class="btn btn-lg btn-info p-2 m-2 my-next">Back</button>
+       <button routerLink="/Rebrand" type="button" class="btn btn-lg btn-info p-2 m-2 my-next">Next</button>
      </div>
    </div>
             <!--modal-->
@@ -89,8 +93,10 @@ import { Component, OnInit } from '@angular/core';
             </div>
   `,
   styles: [`
+    body{
+      margin-bottom: auto;
+    }
   .hero {
-  
    background-size:cover;
    background-repeat: no-repeat;
    background-position: center;

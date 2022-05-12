@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
               EDIT PAGE
             </button>
     <div class="container">
-      <div class="row hero" style.background-image="url('{{image1}}')">
+      <div class="row hero" style="height:900px"style.background-image="url('{{image1}}')">
         <div class="col-3"></div>
         <div class="col-3">
           <img [src]="image2" alt="" height="250" width="250">
@@ -39,7 +39,10 @@ import { Component, OnInit } from '@angular/core';
         </div>
         <div class="col-3"></div>
       </div>
-
+        <div class="col-md-12 text-center">
+          <button routerLink="/" type="button" class="btn btn-lg btn-info p-2 m-2 my-next">Back</button>
+          <button routerLink="/Rebrand" type="button" class="btn btn-lg btn-info p-2 m-2 my-next">Next</button>
+        </div>
         <!--modal-->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">

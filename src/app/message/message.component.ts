@@ -26,6 +26,7 @@ import { Component, OnInit } from '@angular/core';
         </div>
       </div>
       <div class="col-md-12 text-center">
+        <button routerLink="/Questions" type="button" class="btn btn-lg btn-info p-2 m-2 my-next">Back</button>
         <button routerLink="/Rebrand" type="button" class="btn btn-lg btn-info p-2 m-2 my-next">Next</button>
       </div>
     </div>
