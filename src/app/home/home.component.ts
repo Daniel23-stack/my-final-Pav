@@ -39,7 +39,7 @@ import { Component, OnInit } from '@angular/core';
                   <div class="container-fluid">
                     <div class="row">
                       <div class="col-md-12">
-                        <label for="formFile" class="form-label">LOGO</label>
+                        <label for="formFile" class="form-label">LOGO(250x250)</label>
                         <input class="form-control" type="file" (change)="logoUpload($event)"  id="formFile">
                       </div>
                     </div>

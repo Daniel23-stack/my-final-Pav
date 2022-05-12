@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
               EDIT PAGE
             </button>
     <div class="container-fluid">
-      <div class="row hero" style.background-image="url('{{image}}')">
+      <div class="row hero" style="height:900px" style.background-image="url('{{image}}')">
         <div class="col-3"></div>
         <div class="col-3">
           <img style="margin-top:10%" src="assets/img/pav.png" alt="">
@@ -29,11 +29,11 @@ import { Component, OnInit } from '@angular/core';
         </div>
         <div class="col-3"></div>
       </div>
+    </div>
       <div class="col-md-12 text-center">
+        <button routerLink="/Message" type="button" class="btn btn-lg btn-info p-2 m-2">Back</button>
         <button routerLink="/Last" type="button" class="btn btn-lg btn-info p-2 m-2">Next</button>
       </div>
-    </div>
-    <hr>
       <!--modal-->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">

@@ -14,6 +14,10 @@ import { Component, OnInit } from '@angular/core';
       <div class="section-main">
         <img [src]="url" alt="" height="850px" width="990px">
       </div>
+      <div class="col-md-12 text-center">
+        <button routerLink="/Rebrand" type="button" class="btn btn-lg btn-info p-2 m-2">Back</button>
+        <button routerLink="#" type="button" class="btn btn-lg btn-info p-2 m-2">Next</button>
+      </div>
     </div>
             <!--modal-->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

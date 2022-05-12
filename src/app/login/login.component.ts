@@ -16,7 +16,7 @@ import { Component, OnInit } from '@angular/core';
         <div class="col-3">
           <img [src]="image2" alt="" height="250" width="250">
         </div>
-        <div class="col-3">
+        <!--<div class="col-3">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title display-6 p-1" style="color:#5252d9;">Welcome</h5>
@@ -32,17 +32,13 @@ import { Component, OnInit } from '@angular/core';
                   <label class="form-check-label" for="flexCheckDefault">
                     <span style="color:#5252d9">REMEMBER ME</span>
                   </label>
-                <button routerLink="/Questions" class="btn btn-info m-5 col-md-6 text-center" >REGISTER</button>
+                <button  class="btn btn-info m-5 col-md-6 text-center" >REGISTER</button>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-3"></div>
-      </div>
-        <div class="col-md-12 text-center">
-          <button routerLink="/" type="button" class="btn btn-lg btn-info p-2 m-2 my-next">Back</button>
-          <button routerLink="/Rebrand" type="button" class="btn btn-lg btn-info p-2 m-2 my-next">Next</button>
-        </div>
+        </div> 
+      </div>-->
+        
         <!--modal-->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -76,10 +72,17 @@ import { Component, OnInit } from '@angular/core';
             </div>
           </div>
         </div>
+        <div class="col-md-12 text-center bee">
+          <button routerLink="/" type="button" class="btn btn-lg btn-info p-2 m-2 my-next">Back</button>
+          <button routerLink="/Questions" type="button" class="btn btn-lg btn-info p-2 m-2 my-next">Next</button>
+        </div>
     
 
   `,
   styles: [`
+   .bee{
+     margin-top: 650px;
+   } 
   .hero {
    
    background-size:cover;

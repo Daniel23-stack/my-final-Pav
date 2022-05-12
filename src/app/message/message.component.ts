@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
             <button type="button" class="btn btn-lg btn-info p-2 m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
               EDIT PAGE
             </button>
-    <div class="container hero" style="height:500px" style.background-image="url('{{image}}')">
+    <div class="container hero" style="height:900px" style.background-image="url('{{image}}')">
       <h4 style="color:#5252d9;font-family: 'Arial Black'; font-size: 30px; Text-align: center" class="lead p-2"> {{headertext}}</h4>
       <div class="container">
         <div class="row">
@@ -25,11 +25,11 @@ import { Component, OnInit } from '@angular/core';
           </div>
         </div>
       </div>
-      <div class="col-md-12 text-center">
-        <button routerLink="/Questions" type="button" class="btn btn-lg btn-info p-2 m-2 my-next">Back</button>
-        <button routerLink="/Rebrand" type="button" class="btn btn-lg btn-info p-2 m-2 my-next">Next</button>
-      </div>
     </div>
+            <div class="col-md-12 text-center">
+              <button routerLink="/Questions" type="button" class="btn btn-lg btn-info p-2 m-2 my-next">Back</button>
+              <button routerLink="/Rebrand" type="button" class="btn btn-lg btn-info p-2 m-2 my-next">Next</button>
+            </div>
             <!--modal-->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg  modal-dialog-scrollable">
