@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
             <button type="button" class="btn btn-lg btn-info p-2 m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
               EDIT PAGE
             </button>
-   <div class="container">
+   <div class="container-fluid">
      <div class="row hero" style="height:900px" style.background-image="url('{{image}}')">
        <div class="col-3"></div>
        <div class="col-3">
@@ -93,8 +93,9 @@ import { Component, OnInit } from '@angular/core';
             </div>
   `,
   styles: [`
-    body{
-      margin-bottom: auto;
+    body, html {
+      height: 100%;
+      width: 100%;
     }
   .hero {
    background-size:cover;

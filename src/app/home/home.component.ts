@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ImageCroppedEvent} from "ngx-image-cropper";
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
     <nav class="navbar navbar">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img [src]="image1" alt="" width="250px" height="100px">
+          <img [src]="cropImgPreview" alt="" width="250px" height="100px">
         </a>
       </div>
     </nav>
@@ -42,6 +43,19 @@ import { Component, OnInit } from '@angular/core';
                         <label for="formFile" class="form-label">LOGO(250x250)</label>
                         <input class="form-control" type="file" (change)="logoUpload($event)"  id="formFile">
                       </div>
+                      <div class="col-md-12">
+                        <image-cropper
+                            [imageChangedEvent]="ImgChangeEvt"
+                            [maintainAspectRatio]="true"
+                            [aspectRatio]="8 / 8"
+                            [resizeToWidth]="256"
+                            format="png"
+                            (imageCropped)="cropImg($event)"
+                            (imageLoaded)="imgLoad()"
+                            (cropperReady)="initCropper()"
+                            (loadImageFailed)="imgFailed()">
+                        </image-cropper>
+                      </div>
                     </div>
                     <hr>
                     <div class="row">
@@ -61,8 +75,11 @@ import { Component, OnInit } from '@angular/core';
             </div>
           </div>
   `,
-  styles: [
-  ]
+  styles: [`
+    body, html {
+      height: 100%;
+    }
+  `]
 })
 export class HomeComponent implements OnInit {
 
@@ -73,7 +90,12 @@ export class HomeComponent implements OnInit {
 
   image1= 'assets/img/LOGO.png';
   image2= 'assets/img/main.png';
+
+  ImgChangeEvt: any = '';
+  cropImgPreview: any = 'assets/img/LOGO.png';
+
   logoUpload(e: any) {
+    this.ImgChangeEvt = event;
     if(e.target.files){
       var reader = new FileReader();
       reader.readAsDataURL(e.target.files[0]);
@@ -81,6 +103,19 @@ export class HomeComponent implements OnInit {
         this.image1=event.target.result;
       }
     }
+  }
+  cropImg(e: ImageCroppedEvent) {
+    this.cropImgPreview = e.base64;
+  }
+  imgLoad() {
+    // display cropper tool
+  }
+  initCropper() {
+    // init cropper
+  }
+
+  imgFailed() {
+    // error msg
   }
 
   mainPicture(e: any) {

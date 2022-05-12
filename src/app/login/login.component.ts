@@ -10,8 +10,8 @@ import { Component, OnInit } from '@angular/core';
             <button type="button" class="btn btn-lg btn-info p-2 m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
               EDIT PAGE
             </button>
-    <div class="container">
-      <div class="row hero" style="height:900px"style.background-image="url('{{image1}}')">
+    <div class="container-fluid">
+      <div class="row hero img-fluid" style="height:900px;" style.background-image="url('{{image1}}')">
         <div class="col-3"></div>
         <div class="col-3">
           <img [src]="image2" alt="" height="250" width="250">
@@ -80,6 +80,9 @@ import { Component, OnInit } from '@angular/core';
 
   `,
   styles: [`
+    body, html {
+      height: 100%;
+    }
    .bee{
      margin-top: 650px;
    } 
