@@ -16,6 +16,12 @@ import { Component, OnInit } from '@angular/core';
         <div class="col-3">
           <img [src]="image2" alt="" height="250" width="250">
         </div>
+        <div class="container">
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+            <textarea [froalaEditor] class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+        </div>
         <!--<div class="col-3">
           <div class="card">
             <div class="card-body">
@@ -84,7 +90,7 @@ import { Component, OnInit } from '@angular/core';
       height: 100%;
     }
    .bee{
-     margin-top: 650px;
+     margin-top: 550px;
    } 
   .hero {
    
