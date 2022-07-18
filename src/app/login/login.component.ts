@@ -1,134 +1,157 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
+// @ts-ignore
+import FroalaEditor from 'froala-editor';
+declare var $ :any;
 
 @Component({
-  selector: 'app-login',
-  template: `
-    <div class="container">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <button type="button" class="btn btn-lg btn-info p-2 m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              EDIT PAGE
-            </button>
-    <div class="container-fluid">
-      <div class="row hero img-fluid" style="height:900px;" style.background-image="url('{{image1}}')">
-        <div class="col-3"></div>
-        <div class="col-3">
-          <img [src]="image2" alt="" height="250" width="250">
-        </div>
-        <div class="container">
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-            <textarea [froalaEditor] class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-          </div>
-        </div>
-        <!--<div class="col-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title display-6 p-1" style="color:#5252d9;">Welcome</h5>
-              <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label" style="color:#5252d9">Username</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
-              </div>
-              <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label" style="color:#5252d9">Password</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
-                <div class="form-check m-2">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">
-                    <span style="color:#5252d9">REMEMBER ME</span>
-                  </label>
-                <button  class="btn btn-info m-5 col-md-6 text-center" >REGISTER</button>
-              </div>
-            </div>
-          </div>
-        </div> 
-      </div>-->
-        
-        <!--modal-->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Page Contents</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <label for="formFile" class="form-label">SIDE PICTURE</label>
-                      <input class="form-control" type="file" (change)="sidePicture($event)"  id="formFile">
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <label for="formFile" class="form-label">BACKGROUND PICTURE</label>
-                      <input class="form-control" (change)="background($event)" type="file" id="formFile2">
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12 text-center bee">
-          <button routerLink="/" type="button" class="btn btn-lg btn-info p-2 m-2 my-next">Back</button>
-          <button routerLink="/Questions" type="button" class="btn btn-lg btn-info p-2 m-2 my-next">Next</button>
-        </div>
-    
-
-  `,
-  styles: [`
-    body, html {
-      height: 100%;
-    }
-   .bee{
-     margin-top: 550px;
-   } 
-  .hero {
-   
-   background-size:cover;
-   background-repeat: no-repeat;
-   background-position: center;
-    
-  }
-  `
-  ]
+  selector: "app-login",
+  encapsulation: ViewEncapsulation.None,
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit {
+
+  public content:any = "This is my pre defined content";
+
+  public object: Object = {
+    charCounterCount: true,
+    toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat','insert_template'],
+    toolbarButtonsXS: ['bold', 'italic', 'underline', 'paragraphFormat','insert_template'],
+    toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat','insert_template'],
+    toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat','insert_template'],
+  };
 
   constructor() { }
 
   ngOnInit(): void {
+
+    FroalaEditor.DefineIcon("insert_template", {NAME: "plus", SVG_KEY: "add"});
+    FroalaEditor.RegisterCommand('insert_template', {
+      title: 'Hello',
+      focus: false,
+      undo: false,
+      refreshAfterCallback: false,
+
+      callback: () => {
+       $("#selection_box").show()
+      }
+    });
+    
   }
+
+  saveContent(){
+    console.log(this.content)
+
+  }
+
+  @HostListener('window:message', ['$event'])
+  onMessage(e:any) {
+    console.log(e)
+    $("#selection_box").hide()
+
+    this.content += e.data.message
+    setTimeout(() => {
+      this.updateSections()
+    }, 1000)
+
+  }
+
+
   image1 = '/assets/img/slide1.png';
   image2 = 'assets/img/PAv place.png';
   background(e: any) {
     if(e.target.files){
-      var reader = new FileReader();
-      reader.readAsDataURL(e.target.files[0]);
-      reader.onload=(event:any)=>{
-        this.image1=event.target.result;
-      }
+      // var reader = new FileReader();
+      // reader.readAsDataURL(e.target.files[0]);
+      // reader.onload=(event:any)=>{
+      //   this.image1=event.target.result;
+      // }
     }
   }
 
 
 
   sidePicture(e: any) {
-    if(e.target.files){
-      var reader = new FileReader();
-      reader.readAsDataURL(e.target.files[0]);
-      reader.onload=(event:any)=>{
-        this.image2=event.target.result;
-      }
-    }
+    // if(e.target.files){
+    //   var reader = new FileReader();
+    //   reader.readAsDataURL(e.target.files[0]);
+    //   reader.onload=(event:any)=>{
+    //     this.image2=event.target.result;
+    //   }
+    // }
   }
+
+  updateSections() {
+    $(".tempbutton").remove();
+
+    $("body")
+        .find("section")
+        .each((index: any, section : any) => {
+            if (index == 0) {
+                $(section).before(
+                    `<div class="tempbutton">
+    <div id="deleteSection` +
+                        index +
+                        `" class="tempbuttonsingleright">
+      <i class="material-icons">
+        delete
+      </i>
+    </div>
+    </div>`
+                );
+            } else {
+                $(section).before(
+                    `<div class="tempbutton">
+    <div id="moveSection` +
+                        index +
+                        `" class="tempbuttonsingle">
+      <i class="material-icons">
+        keyboard_arrow_up
+      </i>
+    </div>
+    <div id="deleteSection` +
+                        index +
+                        `" class="tempbuttonsingleright">
+      <i class="material-icons">
+        delete
+      </i>
+    </div>
+    </div>`
+                );
+            }
+
+            $(`#moveSection` + index).click((event:any) => {
+                var elementbottom = $(event.currentTarget).parent().nextAll("section").first();
+                var elementtop = $(event.currentTarget).parent().prevAll("section").first();
+                elementtop.before(elementbottom);
+                this.updateSections();
+            });
+
+            $(`#deleteSection` + index).click((event:any) => {
+                $(event.currentTarget).parent().nextAll("section").first().remove();
+                this.updateSections();
+            });
+        });
+
+    $("body")
+        .find("footer")
+        .each((index: any, footer: any) => {
+            $(footer).before(
+                `<div class="tempbutton">
+    <div id="deleteFooter` +
+                    index +
+                    `" class="tempbuttonsingleright">
+      <i class="material-icons">
+        delete
+      </i>
+    </div>
+    </div>`
+            );
+
+            $(`#deleteFooter` + index).click((event: any) => {
+                $(event.currentTarget).parent().nextAll("footer").first().remove();
+                this.updateSections();
+            });
+        });
+}
 }

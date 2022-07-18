@@ -1,15 +1,9 @@
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { ImageCropperModule} from "ngx-image-cropper";
 import 'froala-editor/js/plugins.pkgd.min.js';
-
-
-
-
-
-
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
