@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ImageCropperModule} from "ngx-image-cropper";
 import 'froala-editor/js/plugins.pkgd.min.js';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import {FroalaComponent} from "./shared/froala/froala.component";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,7 +26,8 @@ import {FormsModule} from "@angular/forms";
     QuestionsComponent,
     MessageComponent,
     RebrandComponent,
-    LastComponent
+    LastComponent,
+    FroalaComponent,
   ],
     imports: [
         BrowserModule,
